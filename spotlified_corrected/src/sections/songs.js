@@ -27,6 +27,11 @@ const displayArtistSongs = async (id) => {
 
     // Insérer dans la liste
     songList.appendChild(songItem)
+
+    const audioTag = document.querySelector('audio')
+    audioTag.src = song.audio_url
+    audioTag.play() // Pour démarrer la musique automatiquement
+    console.log(song)
   })
 }
 
