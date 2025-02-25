@@ -94,3 +94,6 @@
     }
   }
 }
+audio {
+  flex-shrink: 0;
+}
