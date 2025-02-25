@@ -4,6 +4,7 @@ import formatTimestamp from "../lib/formatTimestamp.js";
 // Récupérer le tag contenant la liste des chansons et le titre de la section
 const songList = document.querySelector(".list");
 const titreList = document.querySelector("#list-section h4");
+const audioTag = document.querySelector("audio");
 
 // S'occupe d'afficher les chansons d'un artiste, selon son ID.
 // Pour cela, on va utiliser loadSongs du fichiers api.js qui lui sait nous retourner
@@ -38,13 +39,11 @@ const displayArtistSongs = async (id) => {
 // Fonction pour jouer une musique
 
 const playSong = async (song, songs) => {
-  const audioTag = document.querySelector("audio");
   audioTag.src = song.audio_url;
   audioTag.play().then(() => {
     handleProgressBar(audioTag.duration);
+    console.log(song);
   });
-  // console.log(song);
-  console.table(songs);
 };
 
 const displaySongInfos = async (song) => {
@@ -57,11 +56,16 @@ const displaySongInfos = async (song) => {
 };
 
 const handleProgressBar = async (songLength) => {
-  console.log(songLength);
   const progressBar = document.querySelector("#player-progress-bar");
   const currentDuration = document.querySelector("#player-time-current");
   const totalDuration = document.querySelector("#player-time-duration");
+  currentDuration.innerHTML = currentDuration;
   totalDuration.textContent = formatTimestamp(songLength);
+  audioTag.addEventListener(
+    "timeupdate",
+    () => (currentDuration.innerHTML = formatTimestamp(audioTag.currentTime))
+  );
+
   progressBar.value = 0;
 };
 export { displayArtistSongs };
