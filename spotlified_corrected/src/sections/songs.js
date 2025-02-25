@@ -1,4 +1,5 @@
 import { loadSongs } from "../api.js";
+import formatTimestamp from "../lib/formatTimestamp.js";
 
 // Récupérer le tag contenant la liste des chansons et le titre de la section
 const songList = document.querySelector(".list");
@@ -39,17 +40,28 @@ const displayArtistSongs = async (id) => {
 const playSong = async (song, songs) => {
   const audioTag = document.querySelector("audio");
   audioTag.src = song.audio_url;
-  audioTag.play(); // Pour démarrer la musique automatiquement
+  audioTag.play().then(() => {
+    handleProgressBar(audioTag.duration);
+  });
   // console.log(song);
   console.table(songs);
 };
 
 const displaySongInfos = async (song) => {
-  const coverImg = document.querySelector('#player-thumbnail-image')
+  const coverImg = document.querySelector("#player-thumbnail-image");
   coverImg.src = song.artist.image_url;
-  const title = document.querySelector('#player-infos-song-title');
+  const title = document.querySelector("#player-infos-song-title");
   title.innerHTML = song.title;
-  const artist = document.querySelector('#player-infos-artist-name');
+  const artist = document.querySelector("#player-infos-artist-name");
   artist.innerHTML = song.artist.name;
+};
+
+const handleProgressBar = async (songLength) => {
+  console.log(songLength);
+  const progressBar = document.querySelector("#player-progress-bar");
+  const currentDuration = document.querySelector("#player-time-current");
+  const totalDuration = document.querySelector("#player-time-duration");
+  totalDuration.textContent = formatTimestamp(songLength);
+  progressBar.value = 0;
 };
 export { displayArtistSongs };
