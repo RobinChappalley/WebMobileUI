@@ -36,13 +36,11 @@ const displayArtistSongs = async (id) => {
   });
 };
 
-// Fonction pour jouer une musique
-
+// Fonction pour jouer une chanson
 const playSong = async (song, songs) => {
   audioTag.src = song.audio_url;
   audioTag.play().then(() => {
     handleProgressBar(audioTag.duration);
-    console.log(song);
   });
 };
 
@@ -59,13 +57,17 @@ const handleProgressBar = async (songLength) => {
   const progressBar = document.querySelector("#player-progress-bar");
   const currentDuration = document.querySelector("#player-time-current");
   const totalDuration = document.querySelector("#player-time-duration");
-  currentDuration.innerHTML = currentDuration;
   totalDuration.textContent = formatTimestamp(songLength);
-  audioTag.addEventListener(
-    "timeupdate",
-    () => (currentDuration.innerHTML = formatTimestamp(audioTag.currentTime))
-  );
+  progressBar.max = songLength;
+  audioTag.addEventListener("timeupdate", () => {
+    currentDuration.innerHTML = formatTimestamp(audioTag.currentTime);
 
-  progressBar.value = 0;
+    progressBar.value = audioTag.currentTime;
+    console.log(progressBar.value);
+    // progressBar.value = audioTag.currentTime/songLength;
+  });
+  progressBar.addEventListener("change", () => {
+    audioTag.currentTime = progressBar.value;
+  });
 };
 export { displayArtistSongs };
