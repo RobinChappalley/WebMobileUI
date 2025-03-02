@@ -4,7 +4,7 @@ import formatTimestamp from "../lib/formatTimestamp.js";
 // Récupérer le tag contenant la liste des chansons et le titre de la section
 const songList = document.querySelector(".list");
 const titreList = document.querySelector("#list-section h4");
-const audioTag = document.querySelector("audio");
+
 
 // S'occupe d'afficher les chansons d'un artiste, selon son ID.
 // Pour cela, on va utiliser loadSongs du fichiers api.js qui lui sait nous retourner
@@ -29,47 +29,10 @@ const displayArtistSongs = async (id) => {
 
     // Insérer dans la liste
     songList.appendChild(songItem);
-    songItem.addEventListener("click", () => {
-      playSong(song, songs);
-      displaySongInfos(song);
-    });
   });
 };
 
-// Fonction pour jouer une chanson
-const playSong = async (song, songs) => {
-  audioTag.src = song.audio_url;
-  audioTag.play().then(() => {
-    handleProgressBar(audioTag.duration);
-  });
-};
 
-const displaySongInfos = async (song) => {
-  const coverImg = document.querySelector("#player-thumbnail-image");
-  coverImg.src = song.artist.image_url;
-  const title = document.querySelector("#player-infos-song-title");
-  title.innerHTML = song.title;
-  const artist = document.querySelector("#player-infos-artist-name");
-  artist.innerHTML = song.artist.name;
-};
-
-const handleProgressBar = async (songLength) => {
-  const progressBar = document.querySelector("#player-progress-bar");
-  const currentDuration = document.querySelector("#player-time-current");
-  const totalDuration = document.querySelector("#player-time-duration");
-  totalDuration.textContent = formatTimestamp(songLength);
-  progressBar.max = songLength;
-  audioTag.addEventListener("timeupdate", () => {
-    currentDuration.innerHTML = formatTimestamp(audioTag.currentTime);
-
-    progressBar.value = audioTag.currentTime;
-    console.log(progressBar.value);
-    // progressBar.value = audioTag.currentTime/songLength;
-  });
-  progressBar.addEventListener("change", () => {
-    audioTag.currentTime = progressBar.value;
-  });
-};
 
 const toggleLecture = async () => {};
 export { displayArtistSongs };
