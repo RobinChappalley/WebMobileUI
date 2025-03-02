@@ -70,4 +70,6 @@ const handleProgressBar = async (songLength) => {
     audioTag.currentTime = progressBar.value;
   });
 };
+
+const toggleLecture = async () => {};
 export { displayArtistSongs };
