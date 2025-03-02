@@ -1,5 +1,12 @@
+import formatTimestamp from "../lib/formatTimestamp.js";
 
 const audioTag = document.querySelector("audio");
+const player = () => {
+  songItem.addEventListener("click", () => {
+    playSong(song, songs);
+    displaySongInfos(song);
+  });
+};
 const playSong = async (song, songs) => {
   audioTag.src = song.audio_url;
   audioTag.play().then(() => {
@@ -33,3 +40,5 @@ const handleProgressBar = async (songLength) => {
     audioTag.currentTime = progressBar.value;
   });
 };
+
+export {player}

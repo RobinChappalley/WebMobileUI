@@ -1,5 +1,4 @@
 import { loadSongs } from "../api.js";
-import formatTimestamp from "../lib/formatTimestamp.js";
 
 // Récupérer le tag contenant la liste des chansons et le titre de la section
 const songList = document.querySelector(".list");
