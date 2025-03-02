@@ -1,6 +1,7 @@
 import formatTimestamp from "../lib/formatTimestamp.js";
 
 const audioTag = document.querySelector("audio");
+const songItem = document.querySelector("song-item");
 const player = () => {
   songItem.addEventListener("click", () => {
     playSong(song, songs);
