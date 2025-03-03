@@ -3,13 +3,23 @@ import formatTimestamp from "../lib/formatTimestamp.js";
 const audioTag = document.querySelector("audio");
 const playerControl = document.querySelector("#player-control-play");
 const icon = playerControl.querySelector(".material-icons");
-const logo = document.querySelector("#logo")
+const logo = document.querySelector("#logo");
+
+const nextButton = document.querySelector("#player-control-next");
+const prevButton = document.querySelector("#player-control-previous");
+
+let currentSong = null;
+let arraySong = null;
 
 const playSong = async (song, songs) => {
+  if (songs) arraySong = songs;
+  currentSong = song;
   audioTag.src = song.audio_url;
   audioTag.play().then(() => {
     handleProgressBar(audioTag.duration);
   });
+  console.table(arraySong);
+
   displaySongInfos(song);
 };
 
@@ -53,5 +63,28 @@ audioTag.addEventListener("pause", () => {
   icon.innerText = "play_arrow";
   logo.classList.remove("animated");
 });
+
+nextButton.addEventListener("click", () => playNext());
+const playNext = () => {
+  let songID = arraySong.indexOf(currentSong);
+  if (songID !== arraySong.length - 1) {
+    songID++;
+  } else {
+    songID = 0;
+  }
+  playSong(arraySong[songID]);
+};
+
+prevButton.addEventListener("click", () => playPrev());
+const playPrev = () => {
+  let songID = arraySong.indexOf(currentSong);
+  if (songID === 0) {
+    songID = arraySong.length - 1;
+  } else {
+    songID--;
+  }
+  console.log(songID);
+  playSong(arraySong[songID]);
+};
 
 export default playSong;

@@ -15,7 +15,7 @@ const displayArtistSongs = async (id) => {
     songItem.setAttribute("title", song.title);
     songItem.setAttribute("favorite", false); // ou true, pour plus tard
 
-    songItem.addEventListener("click", () => {
+    songItem.addEventListener("play_click", () => {
       playSong(song, songs);
     });
     songList.appendChild(songItem);
