@@ -1,7 +1,7 @@
 import formatTimestamp from "../lib/formatTimestamp.js";
 
 const audioTag = document.querySelector("audio");
-const songItem = document.querySelector("song-item");
+const playerControl = document.querySelector("#player-control-play");
 
 const playSong = async (song, songs) => {
   audioTag.src = song.audio_url;
@@ -35,4 +35,13 @@ const handleProgressBar = async (songLength) => {
   });
 };
 
-export { playSong };
+const toggleLecture = () => {
+  if (audioTag.paused) audioTag.play();
+  else audioTag.pause();
+};
+
+playerControl.addEventListener("click", () => {
+  toggleLecture();
+}); //
+
+export default playSong;

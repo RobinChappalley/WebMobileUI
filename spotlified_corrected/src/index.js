@@ -9,7 +9,7 @@ import { displaySection, activateLink } from "./helpers.js";
 // Code des sections
 import { displayArtists } from "./sections/artists.js";
 import { displayArtistSongs } from "./sections/songs.js";
-import { playSong } from "./sections/player.js";
+import  playSong  from "./sections/player.js";
 const router = () => {
   const hash = window.location.hash || "#home";
   const hashSplit = hash.split("-");
@@ -50,4 +50,3 @@ window.addEventListener("hashchange", router);
 
 // Appelé une fois dans le vide, pour mettre à jour l'état de l'app selon l'url demandée au chargement de la page
 router();
-
