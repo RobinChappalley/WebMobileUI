@@ -2,17 +2,13 @@ import formatTimestamp from "../lib/formatTimestamp.js";
 
 const audioTag = document.querySelector("audio");
 const songItem = document.querySelector("song-item");
-const player = () => {
-  songItem.addEventListener("click", () => {
-    playSong(song, songs);
-    displaySongInfos(song);
-  });
-};
+
 const playSong = async (song, songs) => {
   audioTag.src = song.audio_url;
   audioTag.play().then(() => {
     handleProgressBar(audioTag.duration);
   });
+  displaySongInfos(song);
 };
 
 const displaySongInfos = async (song) => {
@@ -32,14 +28,11 @@ const handleProgressBar = async (songLength) => {
   progressBar.max = songLength;
   audioTag.addEventListener("timeupdate", () => {
     currentDuration.innerHTML = formatTimestamp(audioTag.currentTime);
-
     progressBar.value = audioTag.currentTime;
-    console.log(progressBar.value);
-    // progressBar.value = audioTag.currentTime/songLength;
   });
   progressBar.addEventListener("change", () => {
     audioTag.currentTime = progressBar.value;
   });
 };
 
-export {player}
+export { playSong };

@@ -1,9 +1,9 @@
 import { loadSongs } from "../api.js";
+import { playSong } from "./player.js";
 
 // Récupérer le tag contenant la liste des chansons et le titre de la section
 const songList = document.querySelector(".list");
 const titreList = document.querySelector("#list-section h4");
-
 
 // S'occupe d'afficher les chansons d'un artiste, selon son ID.
 // Pour cela, on va utiliser loadSongs du fichiers api.js qui lui sait nous retourner
@@ -26,12 +26,13 @@ const displayArtistSongs = async (id) => {
     songItem.setAttribute("title", song.title);
     songItem.setAttribute("favorite", false); // ou true, pour plus tard
 
+    songItem.addEventListener("click", () => {
+      playSong(song, songs);
+    });
     // Insérer dans la liste
     songList.appendChild(songItem);
   });
 };
-
-
 
 const toggleLecture = async () => {};
 export { displayArtistSongs };
