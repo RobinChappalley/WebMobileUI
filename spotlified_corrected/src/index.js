@@ -9,7 +9,8 @@ import { displaySection, activateLink } from "./helpers.js";
 // Code des sections
 import { displayArtists } from "./sections/artists.js";
 import { displayArtistSongs } from "./sections/songs.js";
-import  playSong  from "./sections/player.js";
+import playSong from "./sections/player.js";
+import "./sections/search.js";
 const router = () => {
   const hash = window.location.hash || "#home";
   const hashSplit = hash.split("-");
