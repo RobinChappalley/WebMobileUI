@@ -8,8 +8,7 @@ import { displaySection, activateLink } from "./helpers.js";
 
 // Code des sections
 import { displayArtists } from "./sections/artists.js";
-import { displayArtistSongs } from "./sections/songs.js";
-import playSong from "./sections/player.js";
+import { displayArtistSongs, displaySearchSongs } from "./sections/songs.js";
 import "./sections/search.js";
 const router = () => {
   const hash = window.location.hash || "#home";
@@ -27,7 +26,10 @@ const router = () => {
     case "#player":
       displaySection("#player");
       break;
-
+    case "#search":
+      displaySection("#list");
+      displaySearchSongs(hashSplit[1]);
+      break;
     case "#artists":
       // S'il y a un id qui suit, c'est qu'il faut afficher les chansons d'un artiste
       if (hashSplit[1]) {
