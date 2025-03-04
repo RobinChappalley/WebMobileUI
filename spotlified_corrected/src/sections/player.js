@@ -64,6 +64,9 @@ audioTag.addEventListener("pause", () => {
   logo.classList.remove("animated");
 });
 
+audioTag.addEventListener("ended", () => {
+  playNext();
+});
 nextButton.addEventListener("click", () => playNext());
 const playNext = () => {
   let songID = arraySong.indexOf(currentSong);
