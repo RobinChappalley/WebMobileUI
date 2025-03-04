@@ -13,7 +13,6 @@ class SongItem extends HTMLElement {
     playButton.addEventListener("click", (e) => {
       e.preventDefault();
       this.dispatchEvent(playEvent);
-      // console.log("L'   a bien été ajouté à la liste des attributs")
     }); // dispatchEvent permet d'envoyer un événement
   }
 
