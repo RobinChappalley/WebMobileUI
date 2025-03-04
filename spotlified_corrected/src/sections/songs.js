@@ -1,4 +1,4 @@
-import { loadSongs } from "../api.js";
+import { loadSongs, search } from "../api.js";
 import playSong from "./player.js";
 
 const songList = document.querySelector(".list");
@@ -7,8 +7,17 @@ const titreList = document.querySelector("#list-section h4");
 const displayArtistSongs = async (id) => {
   const songs = await loadSongs(id);
   titreList.innerHTML = `Artistes > ${songs[0].artist.name}`;
-  songList.innerHTML = "";
+  display(songs);
+};
 
+const displaySearchSongs = async (query) => {
+  const songs = await search(query);
+  titreList.innerHTML = `Résultat de la recherche : "${query}"`;
+  display(songs);
+};
+
+const display = (songs) => {
+  songList.innerHTML = "";
   songs.forEach((song) => {
     // Créer l'élément
     const songItem = document.createElement("song-item");
@@ -21,5 +30,4 @@ const displayArtistSongs = async (id) => {
     songList.appendChild(songItem);
   });
 };
-
-export { displayArtistSongs };
+export { displayArtistSongs, displaySearchSongs };
