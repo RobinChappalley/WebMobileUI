@@ -18,8 +18,6 @@ const playSong = async (song, songs) => {
   audioTag.play().then(() => {
     handleProgressBar(audioTag.duration);
   });
-  console.table(arraySong);
-
   displaySongInfos(song);
 };
 
