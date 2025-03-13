@@ -1,5 +1,5 @@
 const playEvent = new CustomEvent("play_click");
-
+const favoriteEvent = new CustomEvent("favorite_click");
 class SongItem extends HTMLElement {
   // Définit la liste des attributs qui seront observés et donc appelerons attributeChangedCallback
   // lorsqu'il y a une modification
@@ -14,6 +14,12 @@ class SongItem extends HTMLElement {
       e.preventDefault();
       this.dispatchEvent(playEvent);
     }); // dispatchEvent permet d'envoyer un événement
+    const favoriteButton = this.querySelector(".favorite-button");
+    favoriteButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      this.toggleAttribute("favorite");
+      this.dispatchEvent(favoriteEvent);
+    });
   }
 
   // Appelé lorsque que l'on modifie un attribut présent dans observedAttributes, typiquement au moment de:

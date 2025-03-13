@@ -10,6 +10,8 @@ import { displaySection, activateLink } from "./helpers.js";
 import { displayArtists } from "./sections/artists.js";
 import { displayArtistSongs, displaySearchSongs } from "./sections/songs.js";
 import "./sections/search.js";
+
+// Importation des fonctions pour gérer le webStorage
 import { getItem, getItems, setItem, removeItem } from "./lib/webStorage.js";
 const router = () => {
   const hash = window.location.hash || "#home";
@@ -54,4 +56,5 @@ window.addEventListener("hashchange", router);
 
 // Appelé une fois dans le vide, pour mettre à jour l'état de l'app selon l'url demandée au chargement de la page
 router();
-console.log(getItems());
+
+
