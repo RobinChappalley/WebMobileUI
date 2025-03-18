@@ -88,4 +88,41 @@ const playPrev = () => {
   playSong(arraySong[songID]);
 };
 
+// Gestion des événements de média
+navigator.mediaSession.setActionHandler('nexttrack', () => {
+  playNext();
+});
+
+navigator.mediaSession.setActionHandler('previoustrack', () => {
+  playPrev();
+});
+
+navigator.mediaSession.setActionHandler('play', () => {
+  audioTag.play();
+});
+
+navigator.mediaSession.setActionHandler('pause', () => {
+  audioTag.pause();
+});
+
+navigator.mediaSession.setActionHandler('stop', () => {
+  audioTag.pause();
+  audioTag.currentTime = 0;
+});
+
+// Gestion des touches du clavier
+document.addEventListener('keydown', (event) => {
+  switch(event.code) {
+    case 'MediaTrackNext':
+      playNext();
+      break;
+    case 'MediaTrackPrevious':
+      playPrev();
+      break;
+    case 'MediaPlayPause':
+      toggleLecture();
+      break;
+  }
+});
+
 export default playSong;
