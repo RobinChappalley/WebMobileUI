@@ -28,6 +28,11 @@ const displaySongInfos = async (song) => {
   title.innerHTML = song.title;
   const artist = document.querySelector("#player-infos-artist-name");
   artist.innerHTML = song.artist.name;
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: song.title,
+    artist: song.artist.name,
+    artwork: [{ src: coverImg.src }]
+  });
 };
 
 const handleProgressBar = async (songLength) => {
@@ -109,6 +114,8 @@ navigator.mediaSession.setActionHandler('stop', () => {
   audioTag.pause();
   audioTag.currentTime = 0;
 });
+
+
 
 // Gestion des touches du clavier
 document.addEventListener('keydown', (event) => {
