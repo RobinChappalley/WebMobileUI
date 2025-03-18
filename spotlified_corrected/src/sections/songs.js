@@ -1,4 +1,5 @@
 import { loadSongs, search } from "../api.js";
+import { toggleFavorite } from "../lib/favorites.js";
 import playSong from "./player.js";
 
 const songList = document.querySelector(".list");
@@ -26,6 +27,9 @@ const display = (songs) => {
 
     songItem.addEventListener("play_click", () => {
       playSong(song, songs);
+    });
+    songItem.addEventListener("favorite_click", () => {
+      toggleFavorite(song);
     });
     songList.appendChild(songItem);
   });
