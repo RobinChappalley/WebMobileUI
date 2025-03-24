@@ -2,13 +2,13 @@
 	"v3": {
 	  "prefix": "vue3component",
 	  "body": [
-		"import { ref } from 'vue';",
 		"<template>",
 		" ",
 		"</template>",
 		"",
 		"<script setup>",
-	
+		"import { ref } from 'vue';",
+
 	
 		"$2",
 		"</script>",
