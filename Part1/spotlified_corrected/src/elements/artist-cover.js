@@ -11,6 +11,7 @@ class ArtistCover extends HTMLElement {
   }
 }
 
+
 // Déclare le tag du custom element et la classe à utiliser pour le créer dans le DOM
 // Pas besoin d'exporter, juste d'être appelé une fois
 customElements.define("artist-cover", ArtistCover)

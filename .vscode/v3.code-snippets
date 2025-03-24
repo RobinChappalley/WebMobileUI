@@ -1,0 +1,31 @@
+{
+	"v3": {
+	  "prefix": "vue3component",
+	  "body": [
+		"<template>",
+		"  <div class=\"$1\">",
+		"    $0",
+		"  </div>",
+		"</template>",
+		"",
+		"<script setup>",
+		"import { ref } from 'vue';",
+		"",
+		"const message = ref(\"Hello Vue 3!\");",
+		"",
+		"// Exemple d'une fonction composable",
+		"function increment() {",
+		"  // logique pour incrémenter une valeur",
+		"}",
+		"",
+		"$0",
+		"</script>",
+		"",
+		"<style scoped>",
+		"/* Ajoute tes styles ici */",
+		"</style>"
+	  ],
+	  "description": "Snippet de base pour un composant Vue.js 3 avec Composition API et <script setup>"
+	}
+  }
+  
