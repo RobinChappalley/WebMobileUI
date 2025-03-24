@@ -1,30 +1,27 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { computed, ref } from 'vue';
+import TheHeader from './components/TheHeader.vue';
+const tempK = ref(10)
+const tempC = computed(() => { return tempK.value - 273.15 })
+const tempF = computed(() => { return (tempC.value*1.8)+32})
+
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <TheHeader></TheHeader>
+  <label for="kelvin">kelvin</label>
+  <input name="kelvin" type="number" v-model="tempK">
+  <br>
+  <label for="celsius">celsius</label>
+  <input name="celsius" type="number" v-model="tempC">
+  <br>
+  <label for="farenheit">farenheit</label>
+  <input name="farenheit" type="number" v-model="tempF">
+
 </template>
 
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+/* Ajoute tes styles ici */
+</style>¨
