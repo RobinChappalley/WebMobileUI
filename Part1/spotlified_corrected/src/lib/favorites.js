@@ -1,22 +1,23 @@
 import { getItem, setItem, getItems, removeItem } from "./webStorage.js";
 
 export const toggleFavorite = (song) => {
-    if (isFavorite(song)) {
-        removeFavorite(song)
-    } else {
-        setFavorite(song)
-    }
-}
-
+  if (isFavorite(song)) {
+    removeFavorite(song);
+  } else {
+    setFavorite(song);
+  }
+};
 
 const setFavorite = (song) => {
-    setItem(song.id, song)
-}
+  setItem(song.id, song);
+};
 
 const removeFavorite = (song) => {
-    removeItem(song.id)
-}
+  console.log(song);
+  removeItem(song.id);
+};
 
-const isFavorite = (song) => {
-    return false
-}
+export const isFavorite = (song) => {
+  if (getItem(song.id)) return "true";
+  else return "false";
+};

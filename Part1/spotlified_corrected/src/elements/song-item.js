@@ -13,22 +13,19 @@ class SongItem extends HTMLElement {
     playButton.addEventListener("click", (e) => {
       e.preventDefault();
       this.dispatchEvent(playEvent);
-    }); 
+    });
 
     const favoriteButton = this.querySelector(".favorite-button");
 
     favoriteButton.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log(this);
-      this.toggleAttribute("favorite");
-      
+      const currentValue = this.getAttribute("favorite");
+      const newValue = currentValue === "true" ? "false" : "true";
+      this.setAttribute("favorite", newValue);
       this.dispatchEvent(favoriteEvent);
     });
+    
   }
-
-
-
-
 
   // Appelé lorsque que l'on modifie un attribut présent dans observedAttributes, typiquement au moment de:
   // newElement.setAttribute('favorite', true)
@@ -62,3 +59,5 @@ class SongItem extends HTMLElement {
 // Déclare le tag du custom element et la classe à utiliser pour le créer dans le DOM
 // Pas besoin d'exporter, juste d'être appelé une fois
 customElements.define("song-item", SongItem);
+
+//il est nécessaire d'avoir un tiret entre les éléments !

@@ -1,5 +1,5 @@
 import { loadSongs, search } from "../api.js";
-import { toggleFavorite } from "../lib/favorites.js";
+import { toggleFavorite, isFavorite } from "../lib/favorites.js";
 import playSong from "./player.js";
 
 const songList = document.querySelector(".list");
@@ -23,13 +23,14 @@ const display = (songs) => {
     // Créer l'élément
     const songItem = document.createElement("song-item");
     songItem.setAttribute("title", song.title);
-    songItem.setAttribute("favorite", false); // ou true, pour plus tard
+    songItem.setAttribute("favorite", isFavorite(song));
 
     songItem.addEventListener("play_click", () => {
       playSong(song, songs);
     });
     songItem.addEventListener("favorite_click", () => {
       toggleFavorite(song);
+      songItem.setAttribute("favorite", isFavorite(song));
     });
     songList.appendChild(songItem);
   });
