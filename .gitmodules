@@ -1,6 +1,6 @@
 [submodule "Part1/Spotlified_next_level/webmobui-correction"]
 	path = Part1/Spotlified_next_level/webmobui-correction
-	url = https://github.com/RobinChappalley/Spotlified_next_level
+	url = https://github.com/RobinChappalley/webmobui-correction.git
 [submodule "Part1/webmobui-24-exa"]
 	path = Part1/webmobui-24-exa
 	url = https://github.com/RobinChappalley/webmobui-24-exa
