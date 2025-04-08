@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input name="kelvin" type="number" v-model="model">
+        <input type="number" v-model="model">
         <abbr v-if="unit">{{ unit }}</abbr>
     </div>
 </template>
