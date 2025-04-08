@@ -7,3 +7,6 @@
 [submodule "webmobui-24-exa"]
 	path = webmobui-24-exa
 	url = https://github.com/RobinChappalley/webmobui-24-exa
+[submodule "Part2/WebMobUi52-live-1"]
+	path = Part2/WebMobUi52-live-1
+	url = git@github.com:Chabloz/WebMobUi52-live-1.git

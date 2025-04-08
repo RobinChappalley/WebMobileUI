@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import TheHeader from './components/TheHeader.vue';
 import baseInputeNumber from './components/bases/baseInputeNumber.vue';
-const tempSI = ref(10)
+const tempSI = ref(0)
 const tempK = computed(() => { return tempSI })
 const tempC = computed(() => { return tempK.value - 273.15 })
 const tempF = computed(() => { return (tempC.value * 1.8) + 32 })
