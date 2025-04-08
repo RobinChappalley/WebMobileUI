@@ -4,3 +4,6 @@
 [submodule "Part1/webmobui-24-exa"]
 	path = Part1/webmobui-24-exa
 	url = https://github.com/RobinChappalley/webmobui-24-exa
+[submodule "webmobui-24-exa"]
+	path = webmobui-24-exa
+	url = https://github.com/RobinChappalley/webmobui-24-exa
