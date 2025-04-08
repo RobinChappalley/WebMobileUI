@@ -1,12 +1,14 @@
 <template>
     <div>
-        <input type="number" v-model="model">
+        <input type="number" v-model="model" v-bind="$attrs">
         <abbr v-if="unit">{{ unit }}</abbr>
     </div>
 </template>
 
 <script setup>
-
+defineOptions({
+    inheritAttrs: false, // disable inheritAttrs to the root element, so use v-bind="$attrs" to pass all attributes to the input element
+});
 //Reçoit l'information
 
 defineProps({
